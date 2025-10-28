@@ -81,11 +81,11 @@ function New-SCSMIncidentReport {
     }
 
     # --- SCSM lookups ---
-    $IncClass = Get-SCSMClass -Name 'System.WorkItem.Incident'
-    $RelWI = Get-SCSMRelationshipClass -Name 'System.WorkItemRelatesToWorkItem'
-    $RelAU = Get-SCSMRelationshipClass -Name 'System.WorkItemAffectedUser'
-    $RelATU = Get-SCSMRelationshipClass -Name 'System.WorkItemAssignedToUser'
-    $ActiveId = (Get-SCSMEnumeration IncidentStatusEnum.Active).Id
+    $IncClass = Get-SCSMClass -Name 'System.WorkItem.Incident$'
+    $RelWI = Get-SCSMRelationshipClass -Name 'System.WorkItemRelatesToWorkItem$'
+    $RelAU = Get-SCSMRelationshipClass -Name 'System.WorkItemAffectedUser$'
+    $RelATU = Get-SCSMRelationshipClass -Name 'System.WorkItemAssignedToUser$'
+    $ActiveId = (Get-SCSMEnumeration IncidentStatusEnum.Active$).Id
 
     # Hämta incidenter (Status = Active)/Get incidents (Status = Active)
     $items = Get-SCSMObject -Class $IncClass -Filter "Status -eq '$ActiveId'" -ThreeLetterWindowsLanguageName $tl
